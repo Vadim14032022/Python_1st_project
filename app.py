@@ -1,21 +1,27 @@
 import pygame
 import sys
 
-FPS = 60
-W = 700  # ширина экрана
-H = 300  # высота экрана
-WHITE = (255, 255, 255)
-BLUE = (0, 70, 225)
-
-sc = pygame.display.set_mode((W, H))
+# Set up the drawing window
+screen = pygame.display.set_mode([500, 500])
 clock = pygame.time.Clock()
 
-# координаты и радиус круга
-x = W // 2
-y = H // 2
-r = 50
-
-while 1:
+running = True
+while running:
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
             print(event.unicode)
+        if event.type == pygame.QUIT:
+            running = False
+
+        # Fill the background with white
+        screen.fill((255, 255, 255))
+
+        # Draw a solid blue circle in the center
+        pygame.draw.circle(screen, (0, 0, 255), (250, 250), 75)
+
+        # Flip the display
+        pygame.display.flip()
+
+pygame.quit()
+exit()
+
