@@ -3,7 +3,7 @@ from Button import *
 from TextInput import *
 from pygame.locals import *
 import os
-import time
+import re
 
 pygame.init()
 
@@ -24,12 +24,16 @@ rect = (20, 50)  # img.get_rect()
 # cursor = Rect(rect.topright, (3, rect.height))
 
 print(screen.get_width(), screen.get_height())
-bt = Button(screen, "Click here", (screen.get_width()//2, screen.get_height()//2),  font=70, bg="navy", feedback="You clicked me")
-path = os.path.join(os.path.dirname(__file__),'app_texts','text1.txt')
+bt = Button(screen, "Click here", (screen.get_width()//2, screen.get_height()//2),  font_size=70, bg="navy")
+path = os.path.join(os.path.dirname(__file__),'app_texts','text2.txt')
 text = ' '.join(open(path).readlines())
-ti = TextInput(screen, text, (100, 100),20)
+text = re.sub(r"[^a-zA-Z0-9 ]","",text)
+print(text)
+ti = TextInput(screen, text, (100, 100),50)
 running = True
 n = 0
+
+
 while running:
     for event in pygame.event.get():
         bt.click(event)
