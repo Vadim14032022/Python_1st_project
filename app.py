@@ -1,7 +1,8 @@
 import pygame
 from Button import *
+from TextInput import *
 from pygame.locals import *
-import sys
+import os
 import time
 
 pygame.init()
@@ -23,29 +24,28 @@ rect = (20, 50)  # img.get_rect()
 # cursor = Rect(rect.topright, (3, rect.height))
 
 print(screen.get_width(), screen.get_height())
-bt = Button(screen, "Click here", (100, 100),  font=30, bg="navy", feedback="You clicked me")
+bt = Button(screen, "Click here", (screen.get_width()//2, screen.get_height()//2),  font=70, bg="navy", feedback="You clicked me")
+path = os.path.join(os.path.dirname(__file__),'app_texts','text1.txt')
+text = ' '.join(open(path).readlines())
+ti = TextInput(screen, text, (100, 100),20)
 running = True
 n = 0
 while running:
     for event in pygame.event.get():
         bt.click(event)
-        if event.type == pygame.KEYDOWN:
-            n += 1
-            print(event.unicode)
-            text += event.unicode
-            img = font.render(text[-10:], True, (255, 0, 0))
-            # rect.size = img.get_size()
-            if event.key == pygame.K_ESCAPE:
-                running = False
+        ti.update(event)
+        #if event.key == pygame.K_ESCAPE:
+        #   running = False
         if event.type == pygame.QUIT:
             running = False
 
     # Fill the background with white
     screen.fill((255, 255, 255))
     bt.show()
-    screen.blit(font.render(str(int(pygame.time.get_ticks() / 1000)), True, (0, 255, 0)), (10, 25))
-    pygame.draw.rect(screen, (255,0,0), Rect(10, 25, 200, 65), 4)
-    screen.blit(img, rect)
+    ti.show()
+    #screen.blit(font.render(str(int(pygame.time.get_ticks() / 1000)), True, (0, 255, 0)), (10, 25))
+    #pygame.draw.rect(screen, (255,0,0), Rect(10, 25, 200, 65), 4)
+    #screen.blit(img, rect)
 
     # Draw a solid blue circle in the center
     # pygame.draw.circle(screen, (0, 0, 255), (screen.get_width()/2, screen.get_height()/2), 75)
