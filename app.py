@@ -24,19 +24,19 @@ rect = (20, 50)  # img.get_rect()
 # cursor = Rect(rect.topright, (3, rect.height))
 
 print(screen.get_width(), screen.get_height())
-bt = Button(screen, "Click here", (screen.get_width()//2, screen.get_height()//2),  font_size=70, bg="navy")
+#bt = Button(screen, "Click here", (screen.get_width()//2, screen.get_height()//2+100),  font_size=70, bg = 'red', color="navy")
 path = os.path.join(os.path.dirname(__file__),'app_texts','text2.txt')
 text = ' '.join(open(path).readlines())
 text = re.sub(r"[^a-zA-Z0-9 ]","",text)
 print(text)
-ti = TextInput(screen, text, (100, 100),50)
+ti = DoubleTextInput(screen, text, (screen.get_width()//2, screen.get_height()//2), 50, size = (900, 50))
 running = True
 n = 0
 
 
 while running:
     for event in pygame.event.get():
-        bt.click(event)
+        #bt.click(event)
         ti.update(event)
         #if event.key == pygame.K_ESCAPE:
         #   running = False
@@ -45,7 +45,7 @@ while running:
 
     # Fill the background with white
     screen.fill((255, 255, 255))
-    bt.show()
+    #bt.show()
     ti.show()
     #screen.blit(font.render(str(int(pygame.time.get_ticks() / 1000)), True, (0, 255, 0)), (10, 25))
     #pygame.draw.rect(screen, (255,0,0), Rect(10, 25, 200, 65), 4)
