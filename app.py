@@ -3,10 +3,9 @@ from Windows import *
 pygame.init()
 screen = pygame.display.set_mode((0, 0), pygame.RESIZABLE, pygame.FULLSCREEN)
 
-window_print_text = WindowPrintText(screen, 'text1.txt')
-
+window_menu = WindowMenu(screen)
 while True:
-    window_print_text.run()
+    window_menu.run()
 
 pygame.quit()
 exit()

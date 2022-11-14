@@ -2,15 +2,61 @@ import os
 import re
 import time
 
+from Button import *
 from TextInput import *
 
 
-class WindowMenu():
-    def __init__(self):
-        pass
+class WindowMenu:
+    def __init__(self, screen):
+        self.screen = screen
+        self.clock = pygame.time.Clock()
+        self.button1 = Button(screen, "Текст 1",
+                              (screen.get_width() // 5, screen.get_height() // 2), 50,
+                              color="black",
+                              bg=(112, 128, 144), size=(300, 400))
+        self.button2 = Button(screen, "Текст 2",
+                              (screen.get_width() // 5 * 2, screen.get_height() // 2), 50,
+                              color="black",
+                              bg=(112, 128, 144), size=(300, 400))
+        self.button3 = Button(screen, "Текст 3",
+                              (screen.get_width() // 5 * 3, screen.get_height() // 2), 50,
+                              color="black",
+                              bg=(112, 128, 144), size=(300, 400))
+        self.button4 = Button(screen, "Ваш текст",
+                              (screen.get_width() // 5 * 4, screen.get_height() // 2), 50,
+                              color="black",
+                              bg=(112, 128, 144), size=(300, 400))
+
+    def run(self):
+        running = True
+
+        while running:
+            for event in pygame.event.get():
+                if self.button1.click(event):
+                    window_print_text = WindowPrintText(self.screen, 'text1.txt')
+                    window_print_text.run()
+                if self.button2.click(event):
+                    window_print_text = WindowPrintText(self.screen, 'text2.txt')
+                    window_print_text.run()
+                if self.button3.click(event):
+                    window_print_text = WindowPrintText(self.screen, 'text3.txt')
+                    window_print_text.run()
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    exit()
+
+            self.screen.fill((135, 206, 250))
+            self.button1.show()
+            self.button2.show()
+            self.button3.show()
+            self.button4.show()
+
+            pygame.display.flip()
+            self.clock.tick(120)
 
 
-class WindowPrintText():
+class WindowPrintText:
     def __init__(self, screen, file_name):
         self.screen = screen
         self.clock = pygame.time.Clock()
@@ -20,6 +66,10 @@ class WindowPrintText():
         path = os.path.join(os.path.dirname(__file__), 'app_texts', file_name)
         text = ' '.join(open(path).readlines())
         self.text = re.sub(r"[^a-zA-Z0-9 ]", "", text)
+        self.button_menu = Button(screen, "Меню",
+                                  (screen.get_width() // 2, screen.get_height() // 15), 50,
+                                  color="black",
+                                  bg=(112, 128, 144))
         self.ti = DoubleTextInput(screen, self.text, (screen.get_width() // 2, screen.get_height() // 2), 50,
                                   bg=(135, 206, 250),
                                   size=(900, 50))
@@ -55,10 +105,11 @@ class WindowPrintText():
         running = True
 
         while running:
-
             for event in pygame.event.get():
                 self.ti.update(event)
                 self.press_key(event)
+                if self.button_menu.click(event):
+                    running = False
                 if event.type == pygame.QUIT:
                     running = False
                     pygame.quit()
@@ -67,6 +118,9 @@ class WindowPrintText():
             self.screen.fill((135, 206, 250))
             self.ti.show()
             self.update_fields()
+
+            self.button_menu.show()
+
             self.text_word_time.show()
             self.text_time.show()
 
