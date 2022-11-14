@@ -19,10 +19,11 @@ class DoubleTextInput:
     def __init__(self, screen, row_text, pos, font_size, **kwargs):
         self.size = kwargs['size']
         self.row_text = row_text
-        self.ti1 = TextInput(screen, '', (pos[0] - self.size[0] // 2, pos[1]), font_size, color="gray", bg='black',
+        self.ti1 = TextInput(screen, '', (pos[0] - self.size[0] // 2, pos[1]), font_size, color="gray",
+                             bg=(220, 220, 220),
                              align='right', size=self.size)
         self.ti2 = TextInput(screen, row_text, (pos[0] + self.size[0] // 2, pos[1]), font_size, color="blue",
-                             bg='black', align='left', size=self.size)
+                             bg=kwargs['bg'], align='left', size=self.size)
         self.printed = 0
         self.mistakes = 0
 
