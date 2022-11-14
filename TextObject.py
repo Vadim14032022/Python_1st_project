@@ -16,25 +16,25 @@ class TextObject:
     def change_text(self, row_text, bg="black"):
         """Change the text whe you click"""
         self.text = self.font.render(row_text[:30], 1, pygame.Color(self.kwargs['color']))
-        try :
+        try:
             self.size = self.kwargs['size']
         except:
-            self.size = max((300,self.font_size),self.text.get_size())
+            self.size = max((300, self.font_size), self.text.get_size())
         self.surface = pygame.Surface(self.size)
         text_rect = self.text.get_rect()
         try:
-            if self.kwargs['align']=='left':
+            if self.kwargs['align'] == 'left':
                 text_rect.left = 0
-            if self.kwargs['align']=='right':
+            if self.kwargs['align'] == 'right':
                 text_rect.right = self.size[0]
         except:
-            text_rect.center = (self.size[0]//2, self.size[1]//2)
+            text_rect.center = (self.size[0] // 2, self.size[1] // 2)
 
         self.surface.fill(bg)
-        self.surface.fill('white', (2, 2, self.size[0]-4, self.size[1]-4))
+        self.surface.fill('white', (2, 2, self.size[0] - 4, self.size[1] - 4))
         self.surface.blit(self.text, text_rect)
-        #pygame.draw(self.surface, (255,0,0), pygame.Rect(10, 25, 200, 65), 4)
-        #self.rect = pygame.Rect(self.x-self.size[0]//2, self.y-self.size[1]//2, self.size[0], self.size[1])
+        # pygame.draw(self.surface, (255,0,0), pygame.Rect(10, 25, 200, 65), 4)
+        # self.rect = pygame.Rect(self.x-self.size[0]//2, self.y-self.size[1]//2, self.size[0], self.size[1])
 
     def show(self):
-        self.screen.blit(self.surface, (self.x-self.size[0]//2, self.y-self.size[1]//2))
+        self.screen.blit(self.surface, (self.x - self.size[0] // 2, self.y - self.size[1] // 2))
