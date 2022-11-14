@@ -21,5 +21,5 @@ user_texts - пользовательские тексты
 
 можно печатать только один текст с замером времени, скорости, точности
 
-![Screenshot](sources/Screenshot_20221114_151915.png)
+![Screenshot](sources/Screenshot_20221114_172919.png)
 
