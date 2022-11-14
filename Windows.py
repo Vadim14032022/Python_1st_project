@@ -75,27 +75,27 @@ class WindowPrintText:
                                   size=(900, 50))
         self.text_time = TextObject(screen, "{:.2f}".format(self.end_time - self.start_time),
                                     (screen.get_width() // 2 - 400, screen.get_height() // 2 - 150), 50,
-                                    color="gray",
+                                    color="black",
                                     bg=(135, 206, 250))
         self.text_speed = TextObject(screen, "0", (screen.get_width() // 2, screen.get_height() // 2 - 150), 50,
-                                     color="gray",
+                                     color="black",
                                      bg=(135, 206, 250))
         self.text_mistakes = TextObject(screen, "0", (screen.get_width() // 2 + 400, screen.get_height() // 2 - 150),
                                         50,
-                                        color="gray",
+                                        color="black",
                                         bg=(135, 206, 250))
         self.text_word_time = TextObject(screen, "Время",
                                          (screen.get_width() // 2 - 400, screen.get_height() // 2 - 208), 50,
-                                         color="gray",
+                                         color="black",
                                          bg=(135, 206, 250))
         self.text_word_speed = TextObject(screen, "Скорость", (screen.get_width() // 2, screen.get_height() // 2 - 208),
                                           50,
-                                          color="gray",
+                                          color="black",
                                           bg=(135, 206, 250))
         self.text_word_mistakes = TextObject(screen, "Точность",
                                              (screen.get_width() // 2 + 400, screen.get_height() // 2 - 208),
                                              50,
-                                             color="gray",
+                                             color="black",
                                              bg=(135, 206, 250))
 
         self.start = False
