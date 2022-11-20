@@ -1,5 +1,7 @@
 #! /usr/bin/python
-from Windows import *
+import pygame
+
+from Windows import WindowMenu
 
 pygame.init()
 screen = pygame.display.set_mode((0, 0), pygame.RESIZABLE, pygame.FULLSCREEN)

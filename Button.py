@@ -1,4 +1,6 @@
-from TextObject import *
+import pygame
+
+from TextObject import TextObject
 
 
 class Button(TextObject):

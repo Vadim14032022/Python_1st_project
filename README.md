@@ -4,14 +4,10 @@
 
 ## Установка и запуск
 
-1) установите pygame
-   ```console
-   pip install pygame==2.1.2
-   ```
-2) склонируйте и запустите проект
    ```console
    git clone git@github.com:Vadim14032022/Python_1st_project.git
    cd Python_1st_project
+   pip install requirements.txt
    chmod +x app.py
    ./app.py
    ```

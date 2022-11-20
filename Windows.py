@@ -2,8 +2,11 @@ import os
 import re
 import time
 
-from Button import *
-from TextInput import *
+import pygame
+
+from Button import Button
+from TextInput import DoubleTextInput
+from TextObject import TextObject
 
 
 class WindowMenu:
