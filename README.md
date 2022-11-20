@@ -2,9 +2,21 @@
 
 ### Тема прокета - Клавиатурный тренажёр
 
-## Инфо
+## Установка и запуск
 
-pygame 2.1.2 (SDL 2.0.16, Python 3.10.7)
+1) установите pygame
+   ```console
+   pip install pygame==2.1.2
+   ```
+2) склонируйте и запустите проект
+   ```console
+   git clone git@github.com:Vadim14032022/Python_1st_project.git
+   cd Python_1st_project
+   chmod +x app.py
+   ./app.py
+   ```
+
+## Структура проекта
 
 #### app.py - главный исполняемый файл
 

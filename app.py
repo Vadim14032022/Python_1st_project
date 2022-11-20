@@ -1,3 +1,4 @@
+#! /usr/bin/python
 from Windows import *
 
 pygame.init()
